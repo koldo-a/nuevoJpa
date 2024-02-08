@@ -43,7 +43,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nickName=" + nickName + "]";
-	}
-	
-	
+	}	
 }
+
+//Eliminamos DTO's de momento y hacemos commit en el main'
