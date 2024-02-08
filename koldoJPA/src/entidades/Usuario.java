@@ -1,7 +1,7 @@
 package entidades;
 
 import jakarta.persistence.*;
-
+//nueva prueba
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
