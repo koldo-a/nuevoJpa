@@ -1,2 +1,0 @@
-netstat -an | find "3306"
-// para ver si hay procesos utilizando el puerto
