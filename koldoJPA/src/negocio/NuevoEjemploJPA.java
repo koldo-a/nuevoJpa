@@ -12,8 +12,8 @@ public class NuevoEjemploJPA {
 		entityManagerFactory = Persistence.createEntityManagerFactory("entidades");
 
 		inTransaction(em -> {
-			em.persist(new Usuario(null, "Koldo"));
-			em.persist(new Usuario(null, "Odlok"));
+			em.persist(new Usuario(null, "Koldo", null));
+			em.persist(new Usuario(null, "Odlok", null));
 		});
 		
 		inTransaction(em -> System.out.println("hola"+em.find(Usuario.class, 2L)));

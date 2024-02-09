@@ -2,9 +2,16 @@ package entidades;
 
 import java.util.Objects;
 
+import jakarta.persistence.*;
+
+@Table(name = "denuncias")
 public class Denuncia {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false)
 	private Usuario quien;
+	@Column(nullable = false)
 	private Usuario aQuien;
 	private String razon;
 	private Post post;
