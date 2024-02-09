@@ -1,9 +1,14 @@
 package negocio;
 
-import java.util.function.*;
+import java.time.LocalDate;
+import java.util.function.Consumer;
 
-import entidades.*;
-import jakarta.persistence.*;
+import entidades.Post;
+import entidades.Usuario;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 
 public class NuevoEjemploJPA {
 	private static EntityManagerFactory entityManagerFactory;
@@ -12,17 +17,30 @@ public class NuevoEjemploJPA {
 		entityManagerFactory = Persistence.createEntityManagerFactory("entidades");
 
 		inTransaction(em -> {
-			em.persist(new Usuario(null, "Koldo", null));
-			em.persist(new Usuario(null, "Odlok", null));
+			
+            Usuario usuario1 = new Usuario(null, "Koldo", null);
+            Usuario usuario2 = new Usuario(null, "Odlok", null);
+			
+			em.persist(usuario1);
+			em.persist(usuario2);
+			//em.persist(new Post(null, LocalDate.now(), new Usuario(null, "Pepe", null), "Hola people!"));
+			
+			Post post1 = new Post(null, LocalDate.now(), usuario1, "Hola People!!!");
+
+			em.persist(post1);
 		});
 		
 		inTransaction(em -> System.out.println("hola"+em.find(Usuario.class, 2L)));
 
 		inTransaction(em -> {
 			var usuarios = em.createQuery("from Usuario", Usuario.class).getResultList();
+			var posts = em.createQuery("from Post", Post.class).getResultList();
 						
 			for(Usuario usuario: usuarios) {
 				System.out.println("Cada usuario: "+ usuario);
+				for(Post post: posts) {
+					System.out.println("Cada post: "+ post);
+				}
 			}
 		});
 		

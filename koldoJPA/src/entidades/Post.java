@@ -6,7 +6,7 @@ import java.util.*;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "posts")
 public class Post {
 
 	@Id
@@ -17,10 +17,10 @@ public class Post {
 	private LocalDate fecha;
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario_id", nullable = false)
+	@JoinColumn(name = "usuario_id", nullable = false, foreignKey = @ForeignKey(name = "fk_post_usuario"))
 	private Usuario usuario;
 	
-	@Column(nullable = false)
+	@Column(name = "tweet", nullable = false)
 	private String texto;
 
 	public Post() {
@@ -51,6 +51,38 @@ public class Post {
 		Post other = (Post) obj;
 		return Objects.equals(fecha, other.fecha) && Objects.equals(id, other.id) && Objects.equals(texto, other.texto)
 				&& Objects.equals(usuario, other.usuario);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
 	}
 
 	@Override
