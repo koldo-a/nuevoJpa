@@ -26,8 +26,10 @@ public class NuevoEjemploJPA {
 			//em.persist(new Post(null, LocalDate.now(), new Usuario(null, "Pepe", null), "Hola people!"));
 			
 			Post post1 = new Post(null, LocalDate.now(), usuario1, "Hola People!!!");
+			Post post2 = new Post(null, LocalDate.now(), usuario2, "Hola People!!! Soy el usuario 2");
 
 			em.persist(post1);
+			em.persist(post2);
 		});
 		
 		inTransaction(em -> System.out.println("hola"+em.find(Usuario.class, 2L)));
