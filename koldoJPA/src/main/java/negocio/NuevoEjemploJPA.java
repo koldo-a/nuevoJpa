@@ -20,16 +20,34 @@ public class NuevoEjemploJPA {
 			
             Usuario usuario1 = new Usuario(null, "Koldo", null);
             Usuario usuario2 = new Usuario(null, "Odlok", null);
+            Usuario usuario3 = new Usuario(null, "Pepito", null);
 			
 			em.persist(usuario1);
 			em.persist(usuario2);
+			em.persist(usuario3);
 			//em.persist(new Post(null, LocalDate.now(), new Usuario(null, "Pepe", null), "Hola people!"));
 			
-			Post post1 = new Post(null, LocalDate.now(), usuario1, "Hola People!!!");
-			Post post2 = new Post(null, LocalDate.now(), usuario2, "Hola People!!! Soy el usuario 2");
-
+			Post post1 = new Post(null, LocalDate.now(), usuario1, "¡Hola a todos! ¿Cómo están?");
+			Post post2 = new Post(null, LocalDate.now(), usuario2, "Buen día, comunidad. Espero que tengan un excelente día.");
+			Post post3 = new Post(null, LocalDate.now(), usuario3, "Saludos desde mi rincón virtual.");
+			Post post4 = new Post(null, LocalDate.now(), usuario1, "¿Alguien más disfruta del clima soleado?");
+			Post post5 = new Post(null, LocalDate.now(), usuario2, "¡Nuevo post! Compartiendo mis pensamientos del día.");
+			Post post6 = new Post(null, LocalDate.now(), usuario3, "¡Hola a todos! ¿Cómo están?");
+			Post post7 = new Post(null, LocalDate.now(), usuario1, "Buen día, comunidad. Espero que tengan un excelente día.");
+			Post post8 = new Post(null, LocalDate.now(), usuario2, "Saludos desde mi rincón virtual.");
+			Post post9 = new Post(null, LocalDate.now(), usuario3, "¿Alguien más disfruta del clima soleado?");
+			Post post10 = new Post(null, LocalDate.now(), usuario1, "¡Nuevo post! Compartiendo mis pensamientos del día.");
+			
 			em.persist(post1);
 			em.persist(post2);
+			em.persist(post3);
+			em.persist(post4);
+			em.persist(post5);
+			em.persist(post6);
+			em.persist(post7);
+			em.persist(post8);
+			em.persist(post9);
+			em.persist(post10);
 		});
 		
 		inTransaction(em -> System.out.println("hola"+em.find(Usuario.class, 2L)));

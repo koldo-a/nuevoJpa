@@ -24,7 +24,6 @@ public class Post {
 	private String texto;
 
 	public Post() {
-		super();
 	}
 
 	public Post(Long id, LocalDate fecha, Usuario usuario, String texto) {

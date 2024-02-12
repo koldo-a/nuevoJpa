@@ -19,7 +19,6 @@ public class Usuario {
 	private Set<Post> posts = new HashSet<>();
 
 	public Usuario() {
-		super();
 	}
 
 	public Usuario(Long id, String nickName, Set<Post> posts) {
@@ -75,6 +74,5 @@ public class Usuario {
 	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
-
 
 }
