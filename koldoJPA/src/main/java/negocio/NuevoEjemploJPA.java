@@ -18,14 +18,13 @@ public class NuevoEjemploJPA {
 
 		inTransaction(em -> {
 			
-            Usuario usuario1 = new Usuario(null, "Koldo", null);
-            Usuario usuario2 = new Usuario(null, "Odlok", null);
-            Usuario usuario3 = new Usuario(null, "Pepito", null);
+            Usuario usuario1 = new Usuario(null, "Koldo", null, null);
+            Usuario usuario2 = new Usuario(null, "Odlok", null, null);
+            Usuario usuario3 = new Usuario(null, "Pepito", null, null);
 			
 			em.persist(usuario1);
 			em.persist(usuario2);
 			em.persist(usuario3);
-			//em.persist(new Post(null, LocalDate.now(), new Usuario(null, "Pepe", null), "Hola people!"));
 			
 			Post post1 = new Post(null, LocalDate.now(), usuario1, "¡Hola a todos! ¿Cómo están?");
 			Post post2 = new Post(null, LocalDate.now(), usuario2, "Buen día, comunidad. Espero que tengan un excelente día.");

@@ -1,12 +1,21 @@
 package entidades;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -17,25 +26,29 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuario")
 	private Set<Post> posts = new HashSet<>();
+	
+	@OneToMany(mappedBy = "quien")
+	private Set<Denuncia> denuncias = new HashSet<>();
 
 	public Usuario() {
 	}
 
-	public Usuario(Long id, String nickName, Set<Post> posts) {
+	public Usuario(Long id, String nickName, Set<Post> posts, Set<Denuncia> denuncias) {
 		super();
 		this.id = id;
 		this.nickName = nickName;
 		this.posts = posts;
+		this.denuncias = denuncias;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nickName=" + nickName + ", posts=" + posts + "]";
+		return "Usuario [id=" + id + ", nickName=" + nickName + ", posts=" + posts + ", denuncias=" + denuncias + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nickName, posts);
+		return Objects.hash(denuncias, id, nickName, posts);
 	}
 
 	@Override
@@ -47,8 +60,8 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nickName, other.nickName)
-				&& Objects.equals(posts, other.posts);
+		return Objects.equals(denuncias, other.denuncias) && Objects.equals(id, other.id)
+				&& Objects.equals(nickName, other.nickName) && Objects.equals(posts, other.posts);
 	}
 
 	public Long getId() {
@@ -75,4 +88,12 @@ public class Usuario {
 		this.posts = posts;
 	}
 
+	public Set<Denuncia> getDenuncias() {
+		return denuncias;
+	}
+
+	public void setDenuncias(Set<Denuncia> denuncias) {
+		this.denuncias = denuncias;
+	}
 }
+
